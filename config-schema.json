@@ -173,14 +173,16 @@
         "locale",
         "compact",
         "none"
-      ]
+      ],
+      "default": "locale"
     },
     "TopicGroupingMode": {
       "type": "string",
       "enum": [
         "flat",
         "nested"
-      ]
+      ],
+      "default": "flat"
     }
   },
   "$comment": "This schema is auto-generated from the Go struct definitions. Do not edit directly.",

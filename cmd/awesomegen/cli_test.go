@@ -148,6 +148,20 @@ func TestSchemaMatchesTheCommittedFile(t *testing.T) {
 	require.JSONEq(t, string(committed), out)
 }
 
+func TestSchemaDeclaresTheEnumDefaults(t *testing.T) {
+	out, err := run(t, "schema")
+	require.NoError(t, err)
+
+	var doc struct {
+		Defs map[string]struct {
+			Default any `json:"default"`
+		} `json:"$defs"`
+	}
+	require.NoError(t, json.Unmarshal([]byte(out), &doc))
+	require.Equal(t, "locale", doc.Defs["StarsFormat"].Default)
+	require.Equal(t, "flat", doc.Defs["TopicGroupingMode"].Default)
+}
+
 func TestVersionPrintsTheVersion(t *testing.T) {
 	out, err := run(t, "version")
 	require.NoError(t, err)

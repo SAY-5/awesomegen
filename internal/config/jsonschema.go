@@ -27,16 +27,18 @@ func SchemaReflector() *jsonschema.Reflector {
 // JSONSchema provides custom schema for StarsFormat
 func (StarsFormat) JSONSchema() *jsonschema.Schema {
 	return &jsonschema.Schema{
-		Type: "string",
-		Enum: []interface{}{StarsFormatLocale, StarsFormatCompact, StarsFormatNone},
+		Type:    "string",
+		Enum:    []interface{}{StarsFormatLocale, StarsFormatCompact, StarsFormatNone},
+		Default: StarsFormatLocale,
 	}
 }
 
 // JSONSchema provides custom schema for TopicGroupingMode
 func (TopicGroupingMode) JSONSchema() *jsonschema.Schema {
 	return &jsonschema.Schema{
-		Type: "string",
-		Enum: []interface{}{TopicGroupingModeFlat, TopicGroupingModeNested},
+		Type:    "string",
+		Enum:    []interface{}{TopicGroupingModeFlat, TopicGroupingModeNested},
+		Default: TopicGroupingModeFlat,
 	}
 }
 
